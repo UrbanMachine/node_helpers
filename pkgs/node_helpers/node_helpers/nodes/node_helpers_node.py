@@ -6,7 +6,7 @@ from std_msgs.msg import String
 from node_helpers.spinning import create_spin_function
 from rclpy.qos import qos_profile_services_default
 
-class CoolNode(HelpfulNode):
+class ExampleNode(HelpfulNode):
 
     class Parameters(BaseModel):
         # Define your ROS parameters here
@@ -14,7 +14,7 @@ class CoolNode(HelpfulNode):
         publish_hz: float
 
     def __init__(self, **kwargs: Any):
-        super().__init__("CoolNode", **kwargs)
+        super().__init__("ExampleNode", **kwargs)
         # Load parameters from the ROS parameter server
         self.params = self.declare_from_pydantic_model(self.Parameters, "config")
 
@@ -32,4 +32,4 @@ class CoolNode(HelpfulNode):
         msg.data = self.params.publish_value
         self.publisher.publish(msg)
 
-main = create_spin_function(CoolNode)
+main = create_spin_function(ExampleNode)

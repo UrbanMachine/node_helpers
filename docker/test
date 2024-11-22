@@ -11,10 +11,10 @@
 #   docker/test
 #
 #   Run tests on a specific package (passing flags to `colcon test`)
-#   docker/test --packages-select An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.
+#   docker/test --packages-select node_helpers
 #
 #   Run tests on a specific package with a specific test
-#   docker/test --packages-select An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics. --pytest-arg An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics._test/unit/nodes/test_An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics._node.py
+#   docker/test --packages-select node_helpers --pytest-arg node_helpers_test/unit/nodes/test_node_helpers_node.py
 
 set -o errexit
 set -o pipefail

@@ -81,7 +81,7 @@ RUN rosdep update --rosdistro ${ROS2_DISTRO}
 ######################################################################
 ########## Add package.xml's of each package
 ########## NOTE TO TEMPLATE USERS: When adding a new package, add a new line here copying the package.xml
-COPY pkgs/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics./package.xml pkgs/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics./package.xml
+COPY pkgs/node_helpers/package.xml pkgs/node_helpers/package.xml
 ######################################################################
 
 # Install rosdep dependencies for each package
@@ -93,8 +93,8 @@ RUN --mount=type=cache,target="${PIP_CACHE}" \
 ######################################################################
 ########## Add package.xml's of each package
 ########## NOTE TO TEMPLATE USERS: When adding a new package, add a new line here copying the poetry.lock and pyproject.toml files
-COPY pkgs/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics./poetry.lock pkgs/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics./poetry.lock
-COPY pkgs/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics./pyproject.toml pkgs/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics./pyproject.toml
+COPY pkgs/node_helpers/poetry.lock pkgs/node_helpers/poetry.lock
+COPY pkgs/node_helpers/pyproject.toml pkgs/node_helpers/pyproject.toml
 ######################################################################
 
 # Install Poetry dependencies for each package
