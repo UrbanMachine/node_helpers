@@ -1,0 +1,23 @@
+{
+  "template": "git@github.com:UrbanMachine/create-ros-app.git",
+  "commit": "4086bb235feda570f0a79f2b7ea71d11eb62d924",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "email": "alex@urbanmachine.build",
+      "github_username_or_org": "urbanmachine",
+      "dockerhub_username_or_org": "urbanmachine",
+      "project_name": "node_helpers",
+      "project_description": "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "example_package_name": "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.",
+      "example_package_description": "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.",
+      "example_node_name": "CoolNode",
+      "example_launch_profile": "node_helpers_showcase",
+      "example_package_version": "1.0.0",
+      "_template": "git@github.com:UrbanMachine/create-ros-app.git"
+    }
+  },
+  "directory": null
+}

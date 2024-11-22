@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics."
+version = "1.0.0"
+description = "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics."
+authors = ["urbanmachine <alex@urbanmachine.build>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.12.0,<4.0"
+
+[tool.poetry.scripts]
+# Each entry here will create an executable which can be referenced in launchfiles
+CoolNode = "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics..nodes.An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics._node:main"
+
+[tool.colcon-poetry-ros.data-files]
+"share/ament_index/resource_index/packages" = ["resource/An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics."]
+"share/camera_drivers" = ["package.xml"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
