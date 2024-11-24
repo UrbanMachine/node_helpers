@@ -6,10 +6,13 @@ authors = ["urbanmachine <alex@urbanmachine.build>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.12.0"
-PyYAML = "^6.0"
-pydantic = "^2.5.2"
-numpy = "<2.0.0"  # 2.0.0 should be supported after Jazzy upgrade
+python = ">=3.12.0,<4.0"
+numpy = "^2.1.3"
+pydantic = "^2.10.1"
+pyyaml = "^6.0.2"
+
+# For ros2_numpy
+transforms3d = "^0.4.2"
 
 [tool.poetry.scripts]
 interactive_transform_publisher = "node_helpers.nodes.interactive_transform_publisher:main"

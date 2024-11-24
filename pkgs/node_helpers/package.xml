@@ -14,11 +14,14 @@
     <test_depend>python3-pytest</test_depend>
     <test_depend>python3-pytest-cov</test_depend>
 
-
-    <!-- For visualizing and testing -->
-    <depend>robot_state_publisher</depend>
+    <!-- Required for Interactive Transform features  -->
     <depend>rviz2</depend>
-    <depend>joint_state_publisher</depend>
+
+    <!-- Required for ros2_numpy fork   -->
+    <depend>geometry_msgs</depend>
+    <depend>nav_msgs</depend>
+    <depend>sensor_msgs</depend>
+    <depend>tf_transformations</depend>
 
     <export>
         <build_type>ament_python</build_type>
