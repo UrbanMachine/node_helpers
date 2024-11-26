@@ -1,6 +1,6 @@
 {
   "template": "git@github.com:UrbanMachine/create-ros-app.git",
-  "commit": "92da06d68aabc5ba36e559b7fdd83cf7a54a997f",
+  "commit": "5cbe2af623cd536fbb52420e3dc8e3205ff6c86e",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -16,6 +16,7 @@
       "example_node_name": "ExampleNode",
       "example_launch_profile": "node_helpers_showcase",
       "example_package_version": "0.1.0",
+      "__example_messages_package_name": "node_helpers_msgs",
       "_template": "git@github.com:UrbanMachine/create-ros-app.git"
     }
   },
