@@ -22,8 +22,8 @@ This project depends on [Docker](https://docs.docker.com/get-docker/). The linti
 
 ### Running the Project
 
-This project is intended to be used as a library, however there is a showcase project 
-that demonstrates some of the library's features.
+This project is intended to be used as a library, however there is a showcase 
+launch-profile that demonstrates some of the library's features.
 
 To run the project, use the following command:
 
@@ -31,8 +31,8 @@ To run the project, use the following command:
 docker/launch node_helpers_showcase
 ```
 
-Take a look at the nodes under `pkgs/node_helpers/nodes`, and the launch files under 
-`pkgs/node_helpers/launch` to get an idea of some of the libraries features.
+Take a look at the nodes under `pkgs/node_helpers/nodes`, and the launch file under
+`launch-profiles` to get an idea of some of the libraries features.
 
 Then, open http://localhost/ on your browser to view the project logs.
 
