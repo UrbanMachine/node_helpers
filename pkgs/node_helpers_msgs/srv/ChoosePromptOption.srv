@@ -1,0 +1,9 @@
+# Choose a prompt option from a given menu
+# Used by `node_helpers.interaction`
+
+PromptOption option
+
+---
+
+string error_name
+string error_description
