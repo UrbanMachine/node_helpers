@@ -17,6 +17,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
 
 ######################################################################
 ########## NOTE TO TEMPLATE USERS: When adding messages that require other messages,
@@ -36,6 +37,7 @@ rosidl_generate_interfaces(
 
   "msg/PlaySound.msg"
   "msg/PromptOption.msg"
+  "msg/SensorExample.msg"
   "msg/UserPrompt.msg"
 
   "action/RobustActionExample.action"
@@ -47,7 +49,7 @@ rosidl_generate_interfaces(
   ########## NOTE TO TEMPLATE USERS: Add your dependency packages here, like so:
   # DEPENDENCIES my_required_msgs_package
   ######################################################################
-
+  DEPENDENCIES std_msgs
 )
 
 ament_package()
