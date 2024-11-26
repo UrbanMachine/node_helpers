@@ -9,13 +9,13 @@
       "dockerhub_username_or_org": "urbanmachine",
       "project_name": "node_helpers",
       "project_description": "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.",
-      "version": "1.0.0",
+      "version": "0.5.0",
       "license": "MIT",
       "example_package_name": "node_helpers",
       "example_package_description": "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.",
       "example_node_name": "ExampleNode",
       "example_launch_profile": "node_helpers_showcase",
-      "example_package_version": "0.1.0",
+      "example_package_version": "0.5.0",
       "__example_messages_package_name": "node_helpers_msgs",
       "_template": "git@github.com:UrbanMachine/create-ros-app.git"
     }
