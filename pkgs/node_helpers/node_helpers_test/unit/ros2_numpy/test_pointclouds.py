@@ -1,4 +1,3 @@
-
 import node_helpers.ros2_numpy as rnp
 import numpy as np
 import numpy.typing as npt

@@ -1,4 +1,3 @@
-
 import geometry_msgs
 import node_helpers.ros2_numpy as rnp
 import numpy as np

@@ -1,4 +1,3 @@
-
 import node_helpers.ros2_numpy as rnp
 import numpy as np
 from nav_msgs.msg import MapMetaData, OccupancyGrid
