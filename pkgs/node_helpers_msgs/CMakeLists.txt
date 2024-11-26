@@ -34,11 +34,14 @@ rosidl_generate_interfaces(
   # msg/ANewMessageFile.msg
   ######################################################################
 
-  "msg/ExampleMessage.msg"
+  "msg/PlaySound.msg"
+  "msg/PromptOption.msg"
+  "msg/UserPrompt.msg"
 
-  "action/ExampleAction.action"
+  "action/RobustActionExample.action"
 
-  "srv/ExampleService.srv"
+  "srv/ChoosePromptOption.srv"
+  "srv/RobustServiceExample.srv"
 
   ######################################################################
   ########## NOTE TO TEMPLATE USERS: Add your dependency packages here, like so:
