@@ -12,9 +12,7 @@ from node_helpers.launching import (
 namespace_a = "namespace_a"
 namespace_b = "namespace_b"
 NODE_A = SwappableNode(namespace=namespace_a, name="node_a", executable="")
-NODE_A_MOCK = SwappableNode(
-    namespace=namespace_a, name="node_a_mock", executable=""
-)
+NODE_A_MOCK = SwappableNode(namespace=namespace_a, name="node_a_mock", executable="")
 NODE_B = SwappableNode(namespace=namespace_b, name="node_b", executable="")
 NODE_B_MOCK = SwappableNode(namespace=namespace_b, name="node_b_mock", executable="")
 NORMAL_NODE_NAMESPACE_A = Node(namespace=namespace_a, name="cool_node", executable="")

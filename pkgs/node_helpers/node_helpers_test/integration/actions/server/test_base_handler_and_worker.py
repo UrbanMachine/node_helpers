@@ -10,7 +10,7 @@ from node_helpers.actions.server import ActionCallMetric, ActionHandler
 from node_helpers.futures import wait_for_future
 from node_helpers.nodes import HelpfulNode
 from node_helpers.robust_rpc import RobustRPCException
-from node_helpers.testing import TESTING_STATION, NodeForTesting, set_up_node
+from node_helpers.testing import NodeForTesting, set_up_node
 from node_helpers_msgs.action import RobustActionExample
 from rclpy.action.client import ClientGoalHandle
 from rclpy.action.server import ServerGoalHandle
@@ -163,7 +163,7 @@ def test_report_metric(
     expected_uuid = UUID(bytes=bytes(goal_handle.goal_id.uuid))
     for metric in (start_metric, final_metric):
         assert metric.action_name == "example_action"
-        assert metric.node_namespace == f"/{TESTING_STATION}/action_handler"
+        assert metric.node_namespace == "/action_handler"
 
         # Validate both metrics share the same goal_id
         assert metric.goal_id == expected_uuid
