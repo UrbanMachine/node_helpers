@@ -17,4 +17,5 @@ explanation about their intended use within the larger framework.
     launching
     parameters
     robust_rpc
+    sensors
     about_template
