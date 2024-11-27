@@ -3,8 +3,8 @@ from collections.abc import Iterable
 from typing import Any
 
 from launch import LaunchDescriptionEntity
+from launch_ros.actions import Node
 from pydantic import BaseModel
-from rclpy.node import Node
 
 
 class InvalidSwapConfiguration(Exception):
@@ -25,10 +25,10 @@ class SwappableNode(Node):
     If this node exits early during operation, the entire system will shut down.
     """
 
-    def __init__(self, *, namespace: str, node_name: str, **kwargs: Any):
-        super().__init__(namespace=namespace, node_name=node_name, **kwargs)
+    def __init__(self, *, namespace: str, name: str, **kwargs: Any):
+        super().__init__(namespace=namespace, name=name, **kwargs)
         self.swap_namespace = namespace
-        self.swap_name = node_name
+        self.swap_name = name
 
     def should_use(self, configuration: SwapConfiguration) -> bool:
         if configuration.real == self.swap_name:

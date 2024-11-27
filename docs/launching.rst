@@ -26,8 +26,8 @@ Core Features
         )
 
         launch_description = [
-           launching.SwappableNode(namespace="example_namespace", node_name="real_node"),
-           launching.SwappableNode(namespace="example_namespace", node_name="mock_node"),
+           launching.SwappableNode(namespace="example_namespace", name="real_node"),
+           launching.SwappableNode(namespace="example_namespace", name="mock_node"),
         ]
 
         filtered_launch = apply_node_swaps(param_loader.meta_parameters.swaps, launch_description)
