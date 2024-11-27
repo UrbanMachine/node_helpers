@@ -55,14 +55,9 @@ class RobustRPCMixin:
         self: Node,
         action_type: type[RobustActionMsg],
         action_name: str,
-        *,
-        outside_station: bool = False,
         **kwargs: Any,
     ) -> RobustActionClient:
         validate_robust_message(action_type.Result)
-        action_name = stationize_topic(
-            action_name, station_from_namespace(self), outside_station
-        )
         return RobustActionClient(self, action_type, action_name, **kwargs)
 
     def create_robust_action_server(
@@ -71,13 +66,9 @@ class RobustRPCMixin:
         action_name: str,
         execute_callback: ActionCallback,
         result_timeout: float | None = None,
-        outside_station: bool = False,
         **kwargs: Any,
     ) -> ActionServer:
         validate_robust_message(action_type.Result)
-        action_name = stationize_topic(
-            action_name, station_from_namespace(self), outside_station
-        )
 
         return RobustActionServer(
             self,
