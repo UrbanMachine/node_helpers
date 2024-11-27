@@ -94,6 +94,6 @@ class RobustRPCMixin:
             # default rclpy behavior. This is done because the default behavior keeps a
             # cache of the last FIFTEEN MINUTES (!) worth of action call results, which
             # can lead to significant (60-80%) slowdowns in action call times.
-            result_timeout=result_timeout or 400,
+            result_timeout=result_timeout or 10,
             **kwargs,
         )
