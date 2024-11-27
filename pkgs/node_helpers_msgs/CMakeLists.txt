@@ -35,8 +35,10 @@ rosidl_generate_interfaces(
   # msg/ANewMessageFile.msg
   ######################################################################
 
+  "msg/BinaryReading.msg"
   "msg/PlaySound.msg"
   "msg/PromptOption.msg"
+  "msg/RangefinderReading.msg"
   "msg/SensorExample.msg"
   "msg/UserPrompt.msg"
 
