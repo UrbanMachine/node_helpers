@@ -104,10 +104,10 @@ class RobustActionClient(ActionClient, ValidatesReadinessMixin):
 
 
 class PatchRclpyIssue1123(RobustActionClient):
-    """Remove this patch after the issue https://github.com/ros2/rclpy/issues/1123 is
-    resolved.
+    """TODO: Remove this patch after the issue https://github.com/ros2/rclpy/issues/1123
+    is resolved. This might be done on ROS2 Jazzy.
 
-    Tracking PR: https://github.com/ros2/rclpy/pull/1125
+    Tracking PR: https://github.com/ros2/rclpy/pull/1308
 
     The short summary here: This hacky patch fixes an issue where state within the
     ActionClient.*_async() functions had a race condition with what ActionClient.execute
