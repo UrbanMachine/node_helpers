@@ -18,6 +18,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 ######################################################################
 ########## NOTE TO TEMPLATE USERS: When adding messages that require other messages,
@@ -51,7 +52,7 @@ rosidl_generate_interfaces(
   ########## NOTE TO TEMPLATE USERS: Add your dependency packages here, like so:
   # DEPENDENCIES my_required_msgs_package
   ######################################################################
-  DEPENDENCIES std_msgs
+  DEPENDENCIES std_msgs geometry_msgs
 )
 
 ament_package()
