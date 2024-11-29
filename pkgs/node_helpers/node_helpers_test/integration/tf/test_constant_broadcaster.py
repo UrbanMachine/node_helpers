@@ -1,4 +1,3 @@
-import logging
 from collections.abc import Generator
 from time import sleep
 from typing import Any
@@ -52,12 +51,6 @@ def test_basic_operation(node: ClientNode) -> None:
     # Wait until it is broadcasting the new transform
     timeout = Timeout(seconds=25)
     while timeout and node.tf_queue.get(timeout=5.0) == tf_1_expected:
-        logging.error(
-            f"OWO {node.tf_queue.qsize()=} "
-            f"{broadcaster._transform.header.frame_id=} "
-            f"{node.tf_queue.get(timeout=5.0).transforms[0].header.frame_id=}"
-            f"{tf_1_expected.transforms[0].header.frame_id=}"
-        )
         sleep(0.01)
 
     # The new transform should now be being published
