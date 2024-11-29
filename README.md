@@ -15,6 +15,13 @@ An opinionated ROS2 framework that minimizes boilerplate while maximizing reliab
 ## Running This Project
 
 For in-depth documentation on the repository features, read the [About Template](docs/about_template.md) documentation.
+This project is a collection of ROS utilities that play nicely together. It's 
+recommended to start by reading the highlights in ``docs/``. For smaller utilities, they 
+will be documented in READMEs in their respective modules. 
+
+For example, ``node_helpers.timing`` has a README describing the API's in that module. 
+However ``node_helpers.parameters`` has a page under ``docs/`` that describes the
+philosophy and usage of the module in depth.
 
 ### Dependencies
 
