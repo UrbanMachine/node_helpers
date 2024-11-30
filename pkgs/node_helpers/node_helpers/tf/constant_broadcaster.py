@@ -44,3 +44,4 @@ class ConstantStaticTransformBroadcaster:
     def set_transform(self, transform: TransformStamped) -> None:
         """Update the transform that is constantly being broadcasted"""
         self._net_message.transforms = [transform]
+        self._publish_transform()
