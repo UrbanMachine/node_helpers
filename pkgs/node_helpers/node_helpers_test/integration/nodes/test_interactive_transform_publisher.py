@@ -137,7 +137,6 @@ def test_initialization(
 
     # Validate static transform are published, and they match expectations
     for transform_description in transform_publisher.transforms:
-        logging.error(f"Alex: Waiting for {transform_description.model}")
         tf_message = transform_client.tf_static.get(timeout=10)
         transform = transform_description.model
 
