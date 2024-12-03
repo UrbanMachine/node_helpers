@@ -5,4 +5,3 @@ from .swappable_nodes import (
     SwappableNode,
     apply_node_swaps,
 )
-from .urdf import fix_urdf_paths, prepend_namespace
