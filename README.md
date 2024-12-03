@@ -15,20 +15,31 @@ An opinionated ROS2 framework that minimizes boilerplate while maximizing reliab
 ## Running This Project
 
 For in-depth documentation on the repository features, read the [About Template](docs/about_template.md) documentation.
+This project is a collection of ROS utilities that play nicely together. It's 
+recommended to start by reading the highlights in ``docs/``. For smaller utilities, they 
+will be documented in READMEs in their respective modules. 
+
+For example, ``node_helpers.timing`` has a README describing the API's in that module. 
+However ``node_helpers.parameters`` has a page under ``docs/`` that describes the
+philosophy and usage of the module in depth.
 
 ### Dependencies
 
-This project depends on [Docker](https://docs.docker.com/get-docker/), and can be accelerated using [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html). Install both before proceeding.
-
-The linting tooling requires [Poetry](https://python-poetry.org/docs/) to run.
+This project depends on [Docker](https://docs.docker.com/get-docker/). The linting tooling requires [Poetry](https://python-poetry.org/docs/) to run.
 
 ### Running the Project
+
+This project is intended to be used as a library, however there is a showcase 
+launch-profile that demonstrates some of the library's features.
 
 To run the project, use the following command:
 
 ```shell
 docker/launch node_helpers_showcase
 ```
+
+Take a look at the nodes under `pkgs/node_helpers/nodes`, and the launch file under
+`launch-profiles` to get an idea of some of the libraries features.
 
 Then, open http://localhost/ on your browser to view the project logs.
 

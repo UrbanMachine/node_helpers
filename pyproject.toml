@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "node_helpers"
-version = "1.0.0"
+version = "0.5.0"
 description = "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics."
 authors = ["urbanmachine <alex@urbanmachine.build>"]
 license = "MIT"

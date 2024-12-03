@@ -1,0 +1,7 @@
+# This message is for testing RobustRPC actions
+
+---
+string data
+string error_name
+string error_description
+---
