@@ -114,7 +114,7 @@ jobs:
         run: cp -r ${GITHUB_WORKSPACE}/launch-profiles /robot/
       - name: Run tests
         run: |
-          enter-workspaces colcon-test \
+          enter-workspaces colcon test \
           --pytest-with-coverage \
           --test-result-base test-results \
           --pytest-args \
