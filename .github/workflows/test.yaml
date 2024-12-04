@@ -1,0 +1,138 @@
+name: Test
+
+on: [ push ]
+
+jobs:
+  # This job builds the Docker image that will be used in the following test job.
+  # It also publishes the image to the GitHub Container Registry, so every PR can
+  # have an up-to-date image by the name of ghcr.io/GITHUB_USERNAME/PROJECT_NAME:BRANCH_NAME
+  build-image:
+    runs-on: ubuntu-24.04
+    env:
+      BUILT_IMAGE_NAME: ghcr.io/urbanmachine/node_helpers
+      PROJECT_NAME: node_helpers
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Prepare Build
+        id: prep
+        run: |
+          if [[ "${GITHUB_REF}" == "refs/heads/"* ]]
+          then
+            # This is a build on a branch
+            TAG=${GITHUB_REF#refs/heads/}
+          elif [[ "${GITHUB_REF}" == "refs/pull/"* ]]
+          then
+            # This is a PR build
+            TAG=${GITHUB_REF#refs/pull/}
+          elif [[ "${GITHUB_REF}" == "refs/tags/"* ]]
+          then
+            # This is a tagged build
+            TAG=${GITHUB_REF#refs/tags/}
+          else
+            echo "Unexpected reference format ${GITHUB_REF}"
+            exit 1
+          fi
+          
+          # Remove slashes, since they're not allowed in Docker tags
+          TAG=$(echo "${TAG}" | sed 's#/#-#g')
+          echo "tagged_image=${BUILT_IMAGE_NAME}:${TAG}" >> $GITHUB_OUTPUT
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Load Previous Docker Layers Cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          # Key is named differently to avoid collision
+          key: v1-${{ env.PROJECT_NAME }}-${{ runner.os }}-multi-buildx-${{ github.sha }}
+          restore-keys: v1-${{ env.PROJECT_NAME }}-${{ runner.os }}-multi-buildx
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Get Base Image Name
+        id: get_base_image
+        run: |
+          source .env
+          echo "base_image=${BASE_IMAGE}" >> $GITHUB_OUTPUT
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.prep.outputs.tagged_image }}
+          build-args: |
+            BASE_IMAGE=${{ steps.get_base_image.outputs.base_image }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          # Note the mode=max here
+          # More: https://github.com/moby/buildkit#--export-cache-options
+          # And: https://github.com/docker/buildx#--cache-tonametypetypekeyvalue
+          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
+      # This is done to avoid storing outdated build steps in the cache, since
+      # BuildKit never clears stuff out of the cache itself
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+    outputs:
+      tagged_image: ${{ steps.prep.outputs.tagged_image }}
+
+  # This job runs the colcon tests for the project
+  ros-tests:
+    needs: build-image
+    # Run the build on a large runner, since limiting the CPU causes a weird persistent
+    # race condition which causes flaky tests in any test that uses a robot-state-publisher
+    # and joint-state-publisher.
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash
+    timeout-minutes: 40
+    container:
+      image: ${{needs.build-image.outputs.tagged_image}}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_WORKSPACE: /repo/
+    steps:
+      - name: Install Git LFS
+        run: sudo apt-get update && sudo apt-get install git-lfs
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Fix git error in the following line
+        # Caused by an update to git that dislikes when users of different ID's touch
+        # the same git directory, which happens when using a docker runner in CI
+        # https://github.blog/2022-04-12-git-security-vulnerability-announced/
+        # https://github.com/actions/checkout/issues/760
+        run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
+      - name: Copy Python dependencies to github workspace
+        run: cp -r /robot/install .
+      - name: Copy build artifacts to github workspace
+        run: cp -r /robot/build .
+      - name: Move configuration files to /robot/config so hard paths are correct
+        run: cp -r ${GITHUB_WORKSPACE}/config /robot/
+      - name: Run tests
+        run: |
+          enter-workspaces colcon-test \
+          --pytest-with-coverage \
+          --test-result-base test-results \
+          --pytest-args \
+            --rootdir $(pwd) \
+            --durations=50
+      - name: Generate Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: "Test report"
+          path: test-results/**/*.xml
+          reporter: java-junit
+      - name: Report Codecov Coverage
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
