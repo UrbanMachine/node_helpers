@@ -24,10 +24,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --upgrade poetry
           poetry install
-      - name: Install JS linting dependencies
-        run: |
-          cd dashboard
-          npm install
       - name: Install Bash dependencies
         run: sudo apt-get install --yes shellcheck
       - name: Lint
