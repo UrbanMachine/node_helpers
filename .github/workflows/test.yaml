@@ -125,9 +125,9 @@ jobs:
         run: |
           enter-workspaces colcon test \
           --pytest-with-coverage \
+          --base-paths pkgs \
           --test-result-base test-results \
           --pytest-args \
-            --rootdir $(pwd) \
             --durations=50
       - name: Generate Test Report
         uses: dorny/test-reporter@v1
