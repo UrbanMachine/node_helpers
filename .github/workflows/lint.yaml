@@ -28,8 +28,6 @@ jobs:
         run: sudo apt-get install --yes shellcheck
       - name: Lint
         run: poetry run lint --languages all --mode check
-      - name: Check Upstream Template
-        run: poetry run cruft check
 
   check_upstream_template:
     runs-on: ubuntu-24.04
