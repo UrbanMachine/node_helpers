@@ -50,7 +50,7 @@ def test_binary_sensor_from_rangefinder(node: ClientNode) -> None:
         threshold=1.0,
         inverted=False,
     )
-    binary_sensor = BinarySensorFromRangeFinder(
+    binary_sensor = BinarySensorFromRangeFinder(  # noqa: F841
         node=node,
         rangefinder=rangefinder_buffer,
         parameters=parameters,

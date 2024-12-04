@@ -78,7 +78,7 @@ def test_parameter_loader_file_saving() -> None:
     It also shouldn't include any meta parameters data."""
     with _parameter_directory(_BASE_PARAMETERS_YAML) as parameter_dir:
         loader: ParameterLoader[BaseModel] = ParameterLoader(
-             parameters_directory=parameter_dir
+            parameters_directory=parameter_dir
         )
 
     loaded_text = yaml.full_load(loader.ros_parameters_file.read_text())

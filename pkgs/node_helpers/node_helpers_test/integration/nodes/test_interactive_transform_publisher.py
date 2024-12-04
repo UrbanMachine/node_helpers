@@ -1,5 +1,4 @@
 import contextlib
-import logging
 from collections.abc import Generator
 from queue import Empty
 from tempfile import NamedTemporaryFile
