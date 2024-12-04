@@ -114,8 +114,12 @@ jobs:
         # https://github.com/actions/checkout/issues/760
         run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
       - name: Copy Python dependencies to github workspace
-        run: enter-workspaces colcon build
-      - name:
+        run: cp -r /robot/install install
+      - name: Build packages
+        run: colcon build
+      - name: Move launch-profile files to /robot/launch-profiles so hardcoded paths work
+        run: cp -r ${GITHUB_WORKSPACE}/launch-profiles /robot/
+      - name: DELETE ME
         run: sudo apt-get install tree && tree
       - name: Run tests
         run: |
