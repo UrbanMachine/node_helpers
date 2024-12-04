@@ -1,5 +1,5 @@
 {
-  "template": "git@github.com:UrbanMachine/create-ros-app.git",
+  "template": "https://github.com/UrbanMachine/create-ros-app.git",
   "commit": "3b888a4b97a8c8b08dad55f57c06c6e8c3007982",
   "checkout": null,
   "context": {
