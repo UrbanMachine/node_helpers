@@ -1,6 +1,6 @@
 {
   "template": "git@github.com:UrbanMachine/create-ros-app.git",
-  "commit": "a4e77fcc6f6764f18d0785c030c60dda90e17ed6",
+  "commit": "4aaed60259a9622a4a92745866a8353a64cb12b8",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -8,6 +8,7 @@
       "github_username_or_org": "urbanmachine",
       "dockerhub_username_or_org": "urbanmachine",
       "project_name": "node_helpers",
+      "__project_name_slug": "node_helpers",
       "project_description": "An opinionated ROS2 framework that minimizes boilerplate while maximizing reliability. Features intuitive APIs for parameter management, action handling, and error-resilient RPC. Designed by Urban Machine for safe and scalable robotics.",
       "version": "0.5.0",
       "license": "MIT",

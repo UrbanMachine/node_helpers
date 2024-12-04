@@ -11,7 +11,6 @@ from .lint_ruff import lint_ruff_check, lint_ruff_format
 from .lint_shellcheck import lint_shellcheck
 
 PYTHON_LANGUAGE = "python"
-JAVASCRIPT_LANGUAGE = "javascript"
 CPP_LANGUAGE = "cpp"
 BASH_LANGUAGE = "bash"
 ALL_LANGUAGES = "all"
