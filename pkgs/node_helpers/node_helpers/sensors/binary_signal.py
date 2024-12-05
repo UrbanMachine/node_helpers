@@ -35,11 +35,7 @@ def _to_rviz_msg(msg: BinaryReading) -> list[Marker]:
     ]
 
 
-class BinarySensor(
-    BaseSensorPublisher[
-        BinaryReading, bool, "BinarySensorFromFieldPublisher.Parameters"
-    ]
-):
+class BinarySensor(BaseSensorPublisher[BinaryReading, bool, "BinarySensor.Parameters"]):
     def __init__(self, node: Node, parameters: BaseSensorPublisher.Parameters):
         super().__init__(
             node=node,

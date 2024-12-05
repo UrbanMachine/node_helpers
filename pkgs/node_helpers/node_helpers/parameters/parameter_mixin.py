@@ -5,7 +5,7 @@ from typing import Any, TypeVar, cast
 
 from pydantic import BaseModel
 from pydantic_core import PydanticUndefined
-from rcl_interfaces.msg import ParameterDescriptor, SetParametersResult, ParameterValue
+from rcl_interfaces.msg import ParameterDescriptor, SetParametersResult
 from rclpy.exceptions import ParameterAlreadyDeclaredException, ParameterException
 from rclpy.node import Node
 from rclpy.parameter import Parameter
