@@ -11,11 +11,12 @@ jobs:
     env:
       BUILT_IMAGE_NAME: ghcr.io/urbanmachine/node_helpers
       PROJECT_NAME: node_helpers
+
     defaults:
       run:
         shell: bash
     steps:
-      - name: Prepare Build
+      - name: Create A Unique Tag For This Image Based On Branch Name
         id: prep
         run: |
           if [[ "${GITHUB_REF}" == "refs/heads/"* ]]
@@ -84,9 +85,6 @@ jobs:
   # This job runs the colcon tests for the project
   ros-tests:
     needs: build-image
-    # Run the build on a large runner, since limiting the CPU causes a weird persistent
-    # race condition which causes flaky tests in any test that uses a robot-state-publisher
-    # and joint-state-publisher.
     runs-on: ubuntu-24.04
     defaults:
       run:
