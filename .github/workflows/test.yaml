@@ -115,11 +115,14 @@ jobs:
         run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
       - name: Copy Python dependencies to github workspace
         run: cp -r /robot/install install
+      - name: Copy Build output to github workspace
+        run: cp -r /robot/install build
       - name: Move launch-profile files to /robot/launch-profiles so hardcoded paths work
         run: cp -r ${GITHUB_WORKSPACE}/launch-profiles /robot/
       - name: Run tests
         run: |
           enter-workspaces colcon test \
+          --base-paths pkgs \
           --pytest-with-coverage \
           --test-result-base test-results \
           --pytest-args \
