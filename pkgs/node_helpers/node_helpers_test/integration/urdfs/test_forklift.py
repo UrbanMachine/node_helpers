@@ -1,4 +1,5 @@
 from collections.abc import Generator
+from typing import cast
 
 import pytest
 from node_helpers.launching import URDFModuleNodeFactory
@@ -25,7 +26,7 @@ def tf_client() -> Generator[TFClient, None, None]:
 def urdf_module() -> Generator[URDFModuleFixture, None, None]:
     yield from URDFModuleFixture.set_up(
         URDFModuleNodeFactory.Parameters(
-            namespace=_NAMESPACED_CONSTANTS.namespace,
+            namespace=cast(str, _NAMESPACED_CONSTANTS.namespace),
             urdf_constant_name=ForkliftURDF.registration_name,
         ),
         static_transforms=[],

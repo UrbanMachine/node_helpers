@@ -5,3 +5,4 @@ from .swappable_nodes import (
     SwappableNode,
     apply_node_swaps,
 )
+from .urdf_module_launching import URDFModuleNodeFactory
