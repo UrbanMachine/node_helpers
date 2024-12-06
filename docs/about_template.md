@@ -37,10 +37,14 @@ Here's a quick guide on the features of this template
 
 ### Things You Likely Want To Do
 
+- **Create a new package**: It's recommended to just start by developing with the example package that comes with the
+    template after generation. Once you're familiar with development with the template and want to create a second package,
+    you can follow the steps under [Adding a New Package](#adding-a-new-package).
 - **Add new dependencies:**
-  - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after. 
-  - **ROS dependencies:** can be added under `pkgs/<package_name>/package.xml`.
   - **System dependencies:** can be added under `docker/Dockerfile`, under the `install-packages` section.
+  - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after.
+  - **ROS dependencies:** can be added under `pkgs/<package_name>/package.xml`.
+  - **ROS Git dependencies:** If you need to add a ROS package that isn't available in the ROS package index, you can add it as a git dependency in the `docker/Dockerfile` under the `Add Git ROS2 Packages` section.
   
   After any changes, the container will automatically re-build on the next launch.
 - **Save persistent data:** The `/robot/persistent` directory is mounted to `.docker_volumes/ros-nodes/` on your local machine. Save data there to persist across container runs, and to view it in your file manager.
@@ -49,7 +53,34 @@ Here's a quick guide on the features of this template
   - Add a directory under `docker/launch-profiles/`
   - Add a `launching.py` file that launches your ROS nodes inside your new profile directory
   - Fill out the `launching.py` file with the nodes you want to launch.
-  
+  - The directory you created will be mounted under `/robot/launch-profile/` at launch. This is a great place to store configuration files, URDFs, and other specifics for your launch profile.
+
+
+## Container Structure
+
+### `/robot` Directory
+
+The `/robot` directory is where your source code lives after building the container.
+You can find your:
+ - `pkgs/` directory
+ - `build/`, `install/` from the colcon build
+
+### `/robot/launch-profile/` Directory
+A directory pointing towards the launch profile chosen in `docker/launch <launch profile>`
+is mounted under `/robot/launch-profile/`. 
+
+### `/robot/persistent/` Directory
+For saving persistent data, `/robot/persistent` is mounted to `.docker_volumes/ros-nodes/` on your local machine.
+This is a great place to save any serialized data, databases, etc. For static configuration,
+it's recommended to use the `launch-profile` directory.
+
+### `/ros-git-deps/` Directory
+
+In the `Dockerfile`, there's a section for adding ROS packages that aren't available in 
+the ROS package index. These are added as git dependencies. The `ros-git-deps/` 
+directory is where these packages are cloned to, and built.
+
+
 ## Project Structure
 
 ### `pkgs/`
@@ -145,3 +176,20 @@ The `/robot/persistent` directory is intended for you, the developer, to use. So
 The `.gitattributes` file is used to configure common binary file formats that are used in 
 robots such that git uses Large File Storage (LFS) to store them. It also specified certain
 line endings so that docker support works on windows.
+
+# Adding a New Package
+
+It's recommended to start by developing with the example package that comes with the
+template after generation. Once you're familiar with development with the template and want to create a second package,
+you can follow the steps below:
+
+1. Create a new package directory under `pkgs/`
+2. Add a `package.xml` file to the package directory, follow the standard ROS2 package.xml format
+3. Create a pyproject.toml file. Follow the example in the `example_package` directory.
+4. Create a `resource` directory in the package directory, with an empty file in it called `{your package name}`
+5. Create a directory for your code in the package directory, and it's recommended to create a `{your_package_name}_test` directory as well.
+6. Add a few things to the Dockerfile:
+    - Under the `Add package.xml's of each package` section, copy the `package.xml` file into the container
+    - Under the `Add pyproject.toml's of each package` section, copy the `pyproject.toml` file into the container
+
+You should be good to go! Next time you run `docker/launch`, your new package will be built and available in the container.
