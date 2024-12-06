@@ -1,7 +1,7 @@
 Launching
 =========
 
-The `node_helpers.launching` module provides utility functions and classes to streamline the management of ROS launch files.
+The `node_helpers.launching` module provides utility functions and classes to streamline the management of ROS launch files and URDF configurations. This module is particularly useful for handling dynamic node swapping and ensuring file existence for launch operations.
 
 Core Features
 -------------
@@ -44,6 +44,9 @@ Core Features
        from node_helpers import launching
 
        config_file = launching.required_file("/path/to/config.yaml")
+
+3. **URDF Manipulation**:
+   For information on urdf launching, look into at the ``urdfs`` docs.
 
 Error Handling and Validation
 -----------------------------
