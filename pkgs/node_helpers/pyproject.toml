@@ -22,7 +22,7 @@ placeholder = "node_helpers.nodes.placeholder:main"
 
 [tool.colcon-poetry-ros.data-files]
 "share/ament_index/resource_index/packages" = ["resource/node_helpers"]
-"share/node_helpers" = ["package.xml"]
+"share/node_helpers" = ["package.xml", "sample_urdfs/"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

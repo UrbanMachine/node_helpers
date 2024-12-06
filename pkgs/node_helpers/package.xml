@@ -23,6 +23,10 @@
     <depend>sensor_msgs</depend>
     <depend>tf_transformations</depend>
 
+    <!-- Required for urdf utilities-->
+    <depend>joint_state_publisher</depend>
+    <depend>robot_state_publisher</depend>
+
     <export>
         <build_type>ament_python</build_type>
     </export>
