@@ -75,7 +75,7 @@ specifies what URDF the prepended names refer to.
         frames=BigBirdFrames(),
     )
 
-
+Note that an example URDF constant can be found in ``pkgs/node_helpers_test/integration/urdfs/example_urdf_constants.py``
 
 URDFModule
 ----------
@@ -123,3 +123,8 @@ and ensure that all TF frames are published correctly before yielding the fixtur
                 namespace="big_bird_top", urdf_constant_name=BigBirdURDF.registration_name
             )
         )
+
+
+A full example of how to integration test URDFs can be found under ``pkgs/node_helpers/node_helpers_test/integration/urdfs/test_forklift.py``
+
+Note that ``node_helpers`` provides a helpful test URDF in ``pkgs/node_helpers/sample_urdfs/forklift/robot.urdf``
