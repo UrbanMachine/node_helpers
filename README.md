@@ -3,8 +3,8 @@ An opinionated ROS2 framework that minimizes boilerplate while maximizing reliab
 
 ---
 
-[![Test Status](https://github.com/urbanmachine/node_helpers/workflows/Test/badge.svg?branch=main)](https://github.com/urbanmachine/node_helpers/actions?query=workflow%3ATest)
-[![Lint Status](https://github.com/urbanmachine/node_helpers/workflows/Lint/badge.svg?branch=main)](https://github.com/urbanmachine/node_helpers/actions?query=workflow%3ALint)
+[![Test Status](https://github.com/urbanmachine/node_helpers/workflows/Test/badge.svg)](https://github.com/urbanmachine/node_helpers/actions?query=workflow%3ATest)
+[![Lint Status](https://github.com/urbanmachine/node_helpers/workflows/Lint/badge.svg)](https://github.com/urbanmachine/node_helpers/actions?query=workflow%3ALint)
 [![codecov](https://codecov.io/gh/urbanmachine/node_helpers/branch/main/graph/badge.svg)](https://codecov.io/gh/urbanmachine/node_helpers)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)
