@@ -41,6 +41,8 @@ RUN --mount=type=cache,target="${APT_CACHE}" \
     # ROS2
     ros-${ROS2_DISTRO}-ros-base \
     ros-${ROS2_DISTRO}-rosbridge-suite \
+    # TODO: Remove cyclone
+    ros-${ROS2_DISTRO}-rmw-cyclonedds-cpp \
     # Build tools
     build-essential \
     git \
@@ -101,13 +103,8 @@ COPY pkgs/node_helpers/pyproject.toml pkgs/node_helpers/pyproject.toml
 ########## Add Git ROS2 Packages
 ########## NOTE TO TEMPLATE USERS: If you need to depend on a package that is not in the ROS2 distro, you can add it here
 WORKDIR /ros-git-deps/
-RUN --mount=type=cache,target="${PIP_CACHE}" \
-    --mount=type=cache,target="${APT_CACHE}" \
-    install-ros-package-from-git \
-      https://github.com/UrbanMachine/node_helpers.git main pkgs && \
     ##################### Add your packages here!
     ########### install-ros-package-from-git {URL} {BRANCH} {PKGS PATH IN REPO}
-    echo "Done installing ROS2 packages from git"
 ######################################################################
 
 # Install Poetry dependencies for each package in this repo
