@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/UrbanMachine/create-ros-app.git",
-  "commit": "6a85fd934e7c6297d5fd717c545fad443cc4dfcf",
+  "commit": "5d14b64b8a4c2ac85f57a19dd962216de9c7a28a",
   "checkout": null,
   "context": {
     "cookiecutter": {
