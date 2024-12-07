@@ -4,8 +4,6 @@ from xml.etree import ElementTree
 
 from ament_index_python import get_package_share_directory
 
-from node_helpers.launching.files import required_file
-
 NAMESPACE_FMT = "{namespace}.{name}"
 _JOINT_TAG = "joint"
 _LINK_TAG = "link"
@@ -20,7 +18,10 @@ def load_urdf(package: str, relative_urdf_path: Path | str) -> str:
 
     relative_urdf_path = Path(relative_urdf_path)
     package_root = get_package_share_directory(package)
-    urdf_file = required_file(package_root, relative_urdf_path)
+    urdf_file = Path(package_root, relative_urdf_path)
+
+    if not urdf_file.is_file():
+        raise FileNotFoundError(f"URDF file '{urdf_file!s}' not found")
     return urdf_file.read_text()
 
 
