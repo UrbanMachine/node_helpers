@@ -20,6 +20,15 @@ from .nodes import (
 from .resources import MessageResource, NumpyResource, resource_path
 from .threads import ContextThread, DynamicContextThread, get_unclosed_threads
 from .transforms import set_up_static_transforms
+from .urdf_frame_validation import (
+    validate_coincident_transforms,
+    validate_expected_rotation,
+)
+from .urdf_module_fixture import (
+    TFClient,
+    URDFFixtureSetupFailed,
+    URDFModuleFixture,
+)
 
 faulthandler.enable()
 
@@ -42,4 +51,9 @@ __all__ = [
     "set_up_node",
     "rclpy_context",
     "run_and_cancel_task",
+    "URDFModuleFixture",
+    "TFClient",
+    "URDFFixtureSetupFailed",
+    "validate_coincident_transforms",
+    "validate_expected_rotation",
 ]
