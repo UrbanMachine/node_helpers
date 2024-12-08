@@ -4,12 +4,13 @@ from pathlib import Path
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
-
-# Import the forklift URDF module so it register itself with the URDFConstants
-from node_helpers import launching
-from node_helpers.parameters import ParameterLoader
 from pydantic import BaseModel
 
+from node_helpers import launching
+from node_helpers.parameters import ParameterLoader
+
+# Import the forklift URDF module so it register itself with the URDFConstants
+from node_helpers import example_urdf
 
 class MetaParameters(BaseModel):
     """This is a great place to put parameters that affect the generation of the launch
@@ -38,7 +39,9 @@ def generate_launch_description() -> LaunchDescription:
     rviz_config = launching.required_file("/robot/launch-profile/rviz-config.rviz")
 
     urdf_node_factories = (
-        launching.URDFModuleNodeFactory(parameters=node_factory_params)
+        launching.URDFModuleNodeFactory(
+            parameters=node_factory_params
+        )
         for node_factory_params in param_loader.meta_parameters.urdf_modules_to_load
     )
     urdf_nodes = []
