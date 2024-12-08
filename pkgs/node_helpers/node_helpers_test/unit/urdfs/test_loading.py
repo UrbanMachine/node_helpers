@@ -3,8 +3,8 @@ from node_helpers.urdfs import loading as urdf_helpers
 from node_helpers.urdfs.loading import NAMESPACE_FMT
 from node_helpers_test.resources import GENERIC_URDF
 
-EXPECTED_JOINT_NAMES = ["shuttle1-joint", "clamp1-joint"]
-EXPECTED_LINK_NAMES = ["base_link", "shuttle1", "clamp1"]
+EXPECTED_JOINT_NAMES = ["shuttle1-joint", "clamp1-joint", "clamp-mimic-joint"]
+EXPECTED_LINK_NAMES = ["base_link", "shuttle1", "clamp1", "clamp-mimic"]
 
 
 def test_fix_urdf_paths_makes_path_replacements() -> None:
