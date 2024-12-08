@@ -19,6 +19,7 @@ transforms3d = "^0.4.2"
 interactive_transform_publisher = "node_helpers.nodes.interactive_transform_publisher:main"
 sound_player = "node_helpers.nodes.sound_player:main"
 placeholder = "node_helpers.nodes.placeholder:main"
+run_ExampleNode = "node_helpers.nodes.node_helpers_node:main"
 
 [tool.colcon-poetry-ros.data-files]
 "share/ament_index/resource_index/packages" = ["resource/node_helpers"]
