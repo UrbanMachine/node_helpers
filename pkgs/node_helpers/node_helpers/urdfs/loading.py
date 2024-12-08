@@ -11,6 +11,7 @@ _PARENT_TAG = "parent"
 _CHILD_TAG = "child"
 _NAME_KEY = "name"
 _LINK_KEY = "link"
+_MIMIC_TAG = "mimic"
 
 
 def load_urdf(package: str, relative_urdf_path: Path | str) -> str:
@@ -134,5 +135,9 @@ def prepend_namespace(urdf_str: str, namespace: str) -> str:
                 "link",
                 NAMESPACE_FMT.format(namespace=namespace, name=node.get(_LINK_KEY)),
             )
-
+        elif node.tag == _MIMIC_TAG:
+            node.set(
+                "joint",
+                NAMESPACE_FMT.format(namespace=namespace, name=node.get(_NAME_KEY)),
+            )
     return ElementTree.tostring(urdf, encoding="unicode")
