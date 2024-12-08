@@ -105,7 +105,6 @@ COPY pkgs/node_helpers/pyproject.toml pkgs/node_helpers/pyproject.toml
 WORKDIR /ros-git-deps/
     ##################### Add your packages here!
     ########### install-ros-package-from-git {URL} {BRANCH} {PKGS PATH IN REPO}
-    echo "Done installing ROS2 packages from git"
 ######################################################################
 
 # Install Poetry dependencies for each package in this repo
