@@ -18,7 +18,7 @@ class ForkliftFrames(NamedTuple):
 
 ForkliftURDF = URDFConstants[ForkliftJoints, ForkliftFrames](
     from_package="node_helpers",
-    registration_name="forklift",
+    registration_name="test_forklift",
     urdf_paths=[(None, "sample_urdfs/forklift/robot.urdf")],
     joints=ForkliftJoints(),
     frames=ForkliftFrames(),
