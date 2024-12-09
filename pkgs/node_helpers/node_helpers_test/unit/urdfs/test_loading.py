@@ -119,6 +119,7 @@ def test_prepend_namespace() -> None:
         )
         assert len(expected_changes) == len(actual_changes)
 
+
 def test_mimics_are_prepended() -> None:
     """Validate that 'mimic' style joints are prepended with the namespace as well."""
 
