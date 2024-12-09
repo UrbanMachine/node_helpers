@@ -1,3 +1,10 @@
+"""This module demonstrates how to define a `node_helpers` URDFConstants object for a
+basic URDF, specify necessary joint and frame names, and register the URDF with the
+`node_helpers` package.
+
+By registering it, the URDF can be accessed _by name_ in configuration files.
+"""
+
 from typing import NamedTuple
 
 from node_helpers.urdfs import URDFConstants
@@ -18,7 +25,7 @@ class ForkliftFrames(NamedTuple):
 
 ForkliftURDF = URDFConstants[ForkliftJoints, ForkliftFrames](
     from_package="node_helpers",
-    registration_name="test_forklift",
+    registration_name="forklift",
     urdf_paths=[(None, "sample_urdfs/forklift/robot.urdf")],
     joints=ForkliftJoints(),
     frames=ForkliftFrames(),
