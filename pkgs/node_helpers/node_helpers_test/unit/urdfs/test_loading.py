@@ -118,3 +118,14 @@ def test_prepend_namespace() -> None:
             )
         )
         assert len(expected_changes) == len(actual_changes)
+
+def test_mimics_are_prepended() -> None:
+    """Validate that 'mimic' style joints are prepended with the namespace as well."""
+
+    urdf_text: str = GENERIC_URDF.read_text()
+    namespace = "cool_namespace"
+
+    mimic_joint = "clamp1-joint"
+    assert f"{namespace}.{mimic_joint}" not in urdf_text
+    modified = urdf_helpers.prepend_namespace(urdf_text, namespace=namespace)
+    assert modified.count(f'mimic joint="{namespace}.{mimic_joint}"') == 1
