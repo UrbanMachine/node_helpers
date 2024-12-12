@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Builds and re-runs the ROS nodes container. This is useful if you want to restart
+# the container over and over, oftentimes when developing on you ROS code.
+# The container is only re-run if the image has changed.
+#
+# Usage:
+#   docker/reload-ros-nodes <launch-profile>
+#
+# Examples:
+#   docker/reload-ros-nodes node_helpers_showcase
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+source docker/_shared.sh
+
+function main {
+  local launch_profile
+  launch_profile="${1:-}"
+
+  if [[ -z "${launch_profile}" ]]; then
+      echo "Missing <launch_profile> argument, specify a directory under 'launch-profiles/'" >&2
+      echo "Usage: docker/reload-ros-nodes <launch-profile>" >&2
+      launch_profiles_helper_msg
+  fi
+  validate_launch_profile "${launch_profile}"
+
+  build_images  # Build any images that need to be built
+  enable_display_passthrough  # Enable passthrough for the stack
+
+  export LAUNCH_PROFILE="${launch_profile}"
+  docker compose up -d --force-recreate ros-nodes
+}
+
+main "${@}"
